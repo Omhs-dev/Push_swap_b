@@ -6,7 +6,7 @@
 /*   By: ohamadou <ohamadou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 06:40:18 by ohamadou          #+#    #+#             */
-/*   Updated: 2023/06/05 06:40:23 by ohamadou         ###   ########.fr       */
+/*   Updated: 2023/06/12 20:48:51 by ohamadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,3 +105,18 @@ char	**ft_split(char *s, char c)
 	memm[j] = NULL;
 	return (memm);
 }
+
+// int main (void)
+// {
+//         int i = 0;
+//         char *test = " ";
+//         char    sep = ' ';
+//         char    **split = ft_split(test, sep);
+//         while (split[i])
+//         {
+//             printf("split %d : %s\n",i,split[i]);
+//             i++;
+//         }
+//         if (split[0] == NULL)
+// 			printf("null");
+// }

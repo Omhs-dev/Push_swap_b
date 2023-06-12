@@ -6,13 +6,13 @@
 /*   By: ohamadou <ohamadou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 08:58:33 by ohamadou          #+#    #+#             */
-/*   Updated: 2023/04/30 08:23:14 by ohamadou         ###   ########.fr       */
+/*   Updated: 2023/06/12 21:05:46 by ohamadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static void	push(t_stack **stack_src, t_stack **stack_dst)
+void	push(t_stack **stack_src, t_stack **stack_dst)
 {
 	t_stack	*tmp;
 

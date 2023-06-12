@@ -23,7 +23,7 @@ INCS	= -I ./includes/
 
 CC = gcc
 
-FLAGS = -g -Wall -Wextra -Werror -fsanitize=address -static-libsan
+FLAGS = -g -Wall -Wextra -Werror #-fsanitize=address -static-libsan
 
 OBJS = $(SRCS:.c=.o)
 

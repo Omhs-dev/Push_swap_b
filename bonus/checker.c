@@ -16,23 +16,23 @@
 int	exec(char *input, t_stack *stack_a, t_stack *stack_b)
 {
 	if (ft_strncmp(input, "sa\n", 4) == 0)
-		swap_a(&stack_a);
+		swap(stack_a);
 	else if (ft_strncmp(input, "sb\n", 4) == 0)
-		swap_b(&stack_a);
+		swap(stack_b);
 	else if (ft_strncmp(input, "ss\n", 4) == 0)
 		swap_ss(&stack_a, &stack_b);
 	else if (ft_strncmp(input, "pa\n", 4) == 0)
-		push_a(&stack_a, &stack_b);
+		push(&stack_b, &stack_a);
 	else if (ft_strncmp(input, "pb\n", 4) == 0)
-		push_b(&stack_a, &stack_b);
+		push(&stack_a, &stack_b);
 	else if (ft_strncmp(input, "ra\n", 4) == 0)
-		rotate_a(&stack_a);
+		rotate(&stack_a);
 	else if (ft_strncmp(input, "rb\n", 4) == 0)
-		rotate_b(&stack_b);
+		rotate(&stack_b);
 	else if (ft_strncmp(input, "rra\n", 4) == 0)
-		reverse_rotate_a(&stack_a);
+		reverse_rotate(&stack_a);
 	else if (ft_strncmp(input, "rrb\n", 4) == 0)
-		reverse_rotate_b(&stack_b);
+		reverse_rotate(&stack_b);
 	else
 	{
 		free(input);
@@ -81,10 +81,7 @@ int	main(int argc, char **argv)
 	t_stack	*stack_b;
 
 	if (is_parser_error(argc))
-	{
-		write(2, "Error\n", 6);
-		exit(EXIT_FAILURE);
-	}
+		return (0);
 	stack_b = NULL;
 	stack_a = stack_values(argc, argv);
 	ft_check_duplicates(stack_a);

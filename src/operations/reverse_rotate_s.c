@@ -6,7 +6,7 @@
 /*   By: ohamadou <ohamadou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 02:03:03 by ohamadou          #+#    #+#             */
-/*   Updated: 2023/04/30 15:38:28 by ohamadou         ###   ########.fr       */
+/*   Updated: 2023/06/12 21:08:05 by ohamadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 // 	before_last->next = NULL;
 // }
 
-static void	reverse_rotate(t_stack **stack_cntn)
+void	reverse_rotate(t_stack **stack_cntn)
 {
 	t_stack	*tmp;
 	t_stack	*tail;
