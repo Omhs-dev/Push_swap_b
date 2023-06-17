@@ -6,7 +6,7 @@
 /*   By: ohamadou <ohamadou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 16:05:50 by ohamadou          #+#    #+#             */
-/*   Updated: 2023/04/30 15:25:13 by ohamadou         ###   ########.fr       */
+/*   Updated: 2023/06/12 21:11:47 by ohamadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,3 +44,4 @@ void	swap_ss(t_stack **stack_a, t_stack **stack_b)
 	swap(*stack_b);
 	ft_putstr("ss\n");
 }
+

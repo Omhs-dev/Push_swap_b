@@ -6,7 +6,7 @@
 /*   By: ohamadou <ohamadou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 13:28:43 by ohamadou          #+#    #+#             */
-/*   Updated: 2023/06/09 17:09:30 by ohamadou         ###   ########.fr       */
+/*   Updated: 2023/06/12 21:08:14 by ohamadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,9 @@ void	swap(t_stack *stack_cntn);
 void	swap_a(t_stack **stack_a);
 void	swap_b(t_stack **stack_b);
 void	swap_ss(t_stack **stack_a, t_stack **stack_b);
+void	push(t_stack **stack_src, t_stack **stack_dst);
+void	rotate(t_stack **stack_cntn);
+void	reverse_rotate(t_stack **stack_cntn);
 //e
 t_stack	*create_new_stack(int data);
 t_stack	*get_last_element(t_stack *stack);
@@ -59,13 +62,14 @@ void	reverse_rotate_b(t_stack **stack_b);
 void	reverse_rotate_rrr(t_stack **stack_a, t_stack **stack_b);
 //eee
 t_stack	*stack_values(int num_arg, char **arr_str);
+// t_stack	*stack_values(t_stack **ac, char **av);
 void	indexation(t_stack *stack_a, int size);
 //d
 // static int is_number(char *av);
 // static int duplicates_check(char **av);
 // static int arg_zero(char *av);
 int		is_parser_error(int arc);
-int	ft_issign(char c);
+int		ft_issign(char c);
 //g
 // static void rev_rotate_ab(t_stack **as, t_stack **bs, int *a, int *b);
 // static void rotate_rab(t_stack **as, t_stack **bs, int *a, int *b);
@@ -103,12 +107,15 @@ t_stack	*create_stack(int value, t_stack **stack);
 /* split */
 char	**ft_split(char *str, char del);
 int		ft_strlen(char *str);
-t_stack *split_values(int ac, char **av);
+t_stack	*split_values(int ac, char **av);
+int		correct_input(char **av);
+int		is_number(char *av);
 // void printLinkedList(Node* head);
 //bonus
 int		exec(char *input, t_stack *stack_a, t_stack *stack_b);
 t_stack	*stack_values_check(int ac, char **av);
 void	input(t_stack *stack_a, t_stack *stack_b);
+// void	input(t_stack *stack_a);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_strncmp(char *s1, char *s2, size_t n);
 

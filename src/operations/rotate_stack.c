@@ -6,13 +6,13 @@
 /*   By: ohamadou <ohamadou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 01:16:02 by ohamadou          #+#    #+#             */
-/*   Updated: 2023/04/30 15:21:21 by ohamadou         ###   ########.fr       */
+/*   Updated: 2023/06/12 21:48:38 by ohamadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-static void	rotate(t_stack **stack_cntn)
+void	rotate(t_stack **stack_cntn)
 {	
 	t_stack	*temp;
 	t_stack	*swp;

@@ -6,7 +6,7 @@
 /*   By: ohamadou <ohamadou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 09:21:13 by ohamadou          #+#    #+#             */
-/*   Updated: 2023/06/09 16:46:45 by ohamadou         ###   ########.fr       */
+/*   Updated: 2023/06/12 19:33:35 by ohamadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,6 @@ static void	ft_check_duplicates(t_stack *stack_a)
 	}
 }
 
-
 int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
@@ -67,10 +66,7 @@ int	main(int argc, char **argv)
 	int		stack_n;
 
 	if (is_parser_error(argc))
-	{
-		write(2, "Error\n", 6);
-		exit(EXIT_FAILURE);
-	}
+		return (0);
 	stack_b = NULL;
 	stack_a = stack_values(argc, argv);
 	ft_check_duplicates(stack_a);

@@ -6,35 +6,36 @@
 /*   By: ohamadou <ohamadou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/27 04:48:16 by ohamadou          #+#    #+#             */
-/*   Updated: 2023/06/09 17:11:39 by ohamadou         ###   ########.fr       */
+/*   Updated: 2023/06/12 20:50:47 by ohamadou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-#include <stdio.h>
 
-static int	is_number(char *av)
+static void	max_min_check(long int nb, t_stack *stack_a)
 {
-	int	i;
+	if (nb > INT_MAX || nb < INT_MIN)
+		exit_error(&stack_a, NULL);
+}
 
-	i = 0;
-	if (ft_issign(av[i]) && av[i + i] != '\0')
-		i++;
-	while (av[i] && ft_isdigit(av[i]))
-		i++;
-	if (av[i] != '\0' && !ft_isdigit(av[i]))
-		return (0);
-	return (1);
+static void	is_stack_create(long int nb, int is_cr, t_stack *stack_a)
+{
+	if (is_cr == 0)
+	{
+		stack_a = create_new_stack((int)nb);
+		is_cr = 1;
+	}
 }
 
 t_stack	*stack_values(int ac, char **av)
 {
-	t_stack	*stack_a;
+	t_stack			*stack_a;
 	long int		nb;
 	int				i;
 	char			**str;
-	int is_stack_created;
+	int				is_stack_created;
 
+	stack_a = NULL;
 	i = 1;
 	is_stack_created = 0;
 	while (i < ac)
@@ -42,70 +43,20 @@ t_stack	*stack_values(int ac, char **av)
 		str = ft_split(av[i++], ' ');
 		if (!str)
 			exit_error(&stack_a, NULL);
+		if (str[0] == NULL)
+			exit_error(&stack_a, NULL);
 		while (*str)
 		{
-			if (!is_number(*str))
+			if (!ft_isdigit(**str) && **str != '-' && **str != '+')
 				exit_error(&stack_a, NULL);
-			nb = ft_atoi(*str);
-			if (nb > INT_MAX || nb < INT_MIN)
-				exit_error(&stack_a, NULL);
-			if (is_stack_created == 0)
-				stack_a = create_new_stack((int)nb);
-			else
-				add_element_bottom(&stack_a, create_new_stack((int)nb));
-			str++;
+			nb = ft_atoi(*str++);
+			max_min_check(nb, stack_a);
+			is_stack_create(nb, is_stack_created, stack_a);
+			add_element_bottom(&stack_a, create_new_stack((int)nb));
 		}
-		is_stack_created = 1;
 	}
 	return (stack_a);
 }
-
-// t_stack *split_values(int ac, char **av)
-// {
-// 	char **str;
-// 	int i;
-
-// 	i = 1;
-// 	str = ft_split(av[i], ' ');
-// 	if (*str == NULL)
-// 		exit(EXIT_FAILURE);
-// 	while (*str)
-// 	{
-// 		stack_values(ac, av);
-// 		str++;
-// 	}
-// 	return (stack_values(ac, av));
-// }
-
-//fill stacck a with the provided values
-// t_stack	*stack_values(int ac, char **av)
-// {
-// 	t_stack		*stack_a;
-// 	long int	nb;
-// 	int			i;
-// 	char **str;
-// 	char **tmp;
-
-// 	stack_a = NULL;
-// 	nb = 0;
-// 	i = 1;
-// 	str = ft_split(av[i], ' ');
-// 	tmp = str;
-// 	while (i < ac && *str)
-// 	{
-// 		nb = ft_atoi(*str);
-// 		if (nb > INT_MAX || nb < INT_MIN)
-// 			exit_error(&stack_a, NULL);
-// 		if (i == 1)
-// 		{
-// 			stack_a = create_new_stack((int)nb);
-// 		}
-// 		else
-// 			add_element_bottom(&stack_a, create_new_stack((int)nb));
-// 		i++;
-// 	}
-// 	return (stack_a);
-// }
 
 //assign an index go each value in the stack a.
 void	indexation(t_stack *stack_a, int size)

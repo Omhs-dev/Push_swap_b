@@ -39,50 +39,95 @@ int	ft_strncmp(char *s1, char *s2, size_t n)
 	return (0);
 }
 
-t_stack	*create_stack_from_string(char *str)
-{
-	t_stack		*stack;
-	long int	nb;
+// t_stack	*create_stack_from_string(char *str)
+// {
+// 	t_stack		*stack;
+// 	long int	nb;
 
-	stack = NULL;
-	while (*str)
+// 	stack = NULL;
+// 	while (*str)
+// 	{
+// 		if (!ft_isdigit(*str) && *str != '-' && *str != '+')
+// 			exit_error(&stack, NULL);
+// 		nb = ft_atoi(str);
+// 		if (nb > INT_MAX || nb < INT_MIN)
+// 			exit_error(&stack, NULL);
+// 		if (stack == NULL)
+// 			stack = create_new_stack((int)nb);
+// 		else
+// 			add_element_bottom(&stack, create_new_stack((int)nb));
+// 		while (*str && *str != ' ')
+// 			str++;
+// 		if (*str)
+// 			str++;
+// 	}
+// 	return (stack);
+// }
+
+// t_stack	*stack_values_check(int ac, char **av)
+// {
+// 	t_stack	*stack_a;
+// 	int		i;
+// 	char	**str;
+
+// 	stack_a = NULL;
+// 	i = 1;
+// 	while (i < ac)
+// 	{
+// 		str = ft_split(av[i], ' ');
+// 		if (str == NULL)
+// 			exit_error(&stack_a, NULL);
+// 		while (*str)
+// 		{
+// 			stack_a = create_stack_from_string(*str);
+// 			str++;
+// 		}
+// 		i++;
+// 	}
+// 	return (stack_a);
+// }
+static void	max_min_check(long int nb, t_stack *stack_a)
+{
+	if (nb > INT_MAX || nb < INT_MIN)
+		exit_error(&stack_a, NULL);
+}
+
+static void	is_stack_create(long int nb, int is_cr, t_stack *stack_a)
+{
+	if (is_cr == 0)
 	{
-		if (!ft_isdigit(*str) && *str != '-' && *str != '+')
-			exit_error(&stack, NULL);
-		nb = ft_atoi(str);
-		if (nb > INT_MAX || nb < INT_MIN)
-			exit_error(&stack, NULL);
-		if (stack == NULL)
-			stack = create_new_stack((int)nb);
-		else
-			add_element_bottom(&stack, create_new_stack((int)nb));
-		while (*str && *str != ' ')
-			str++;
-		if (*str)
-			str++;
+		stack_a = create_new_stack((int)nb);
+		is_cr = 1;
 	}
-	return (stack);
 }
 
 t_stack	*stack_values_check(int ac, char **av)
 {
-	t_stack	*stack_a;
-	int		i;
-	char	**str;
+	t_stack			*stack_a;
+	long int		nb;
+	int				i;
+	char			**str;
+	int				is_stack_created;
 
 	stack_a = NULL;
 	i = 1;
+	is_stack_created = 0;
 	while (i < ac)
 	{
-		str = ft_split(av[i], ' ');
-		if (str == NULL)
+		str = ft_split(av[i++], ' ');
+		if (!str)
+			exit_error(&stack_a, NULL);
+		if (str[0] == NULL)
 			exit_error(&stack_a, NULL);
 		while (*str)
 		{
-			stack_a = create_stack_from_string(*str);
-			str++;
+			if (!ft_isdigit(**str) && **str != '-' && **str != '+')
+				exit_error(&stack_a, NULL);
+			nb = ft_atoi(*str++);
+			max_min_check(nb, stack_a);
+			is_stack_create(nb, is_stack_created, stack_a);
+			add_element_bottom(&stack_a, create_new_stack((int)nb));
 		}
-		i++;
 	}
 	return (stack_a);
 }
